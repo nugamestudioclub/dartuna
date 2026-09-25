@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://uyly63xgnnrh"]
+
+[ext_resource type="ArrayMesh" uid="uid://ud46o5j7u2px" path="res://assets/models/3D Models/DartBoard_Low_Poly_Cylinder_001.res" id="1_r6vnx"]
+
+[node name="MarcoDevScene" type="Node3D" unique_id=374469153]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=717482598]
+transform = Transform3D(-4.371139e-08, 0.17462939, 0, -1, -7.633293e-09, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_r6vnx")
