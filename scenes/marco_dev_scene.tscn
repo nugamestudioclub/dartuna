@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://uyly63xgnnrh"]
+
+[ext_resource type="ArrayMesh" uid="uid://ud46o5j7u2px" path="res://assets/models/3D Models/DartBoard_Low_Poly_Cylinder_001.res" id="1_r6vnx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r6vnx"]
+size = Vector3(0.33843994, 1, 1)
+
+[node name="MarcoDevScene" type="Node3D" unique_id=374469153]
+
+[node name="RigidBody3D" type="CharacterBody3D" parent="." unique_id=844168675]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=717482598]
+transform = Transform3D(-4.371139e-08, 0.17462939, 0, -1, -7.633293e-09, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_r6vnx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=45856196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0030822754, 0, 0)
+shape = SubResource("BoxShape3D_r6vnx")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=977305428]
+transform = Transform3D(0.007884616, 0, 0.99996895, 0, 1, 0, -0.99996895, 0, 0.007884616, 2.892331, 0, 0)
