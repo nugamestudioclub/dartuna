@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dfimdvjo5bmmk"]
+
+[ext_resource type="Script" uid="uid://dg817pqu5dgrj" path="res://scripts/dartboard.gd" id="1_hn6am"]
+[ext_resource type="ArrayMesh" uid="uid://bxjeyh4n53i4f" path="res://assets/models/3D Models/DartBoard_Low_Poly_Cylinder_001.res" id="2_b7or6"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o01bi"]
+height = 0.20935059
+
+[node name="Dartboard - RigidBody3D" type="CharacterBody3D" unique_id=1711958480]
+script = ExtResource("1_hn6am")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1374658894]
+transform = Transform3D(-4.371139e-08, 0.17462939, 0, -1, -7.633293e-09, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("2_b7or6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2146540203]
+transform = Transform3D(-8.742278e-08, -2, 0, 2, -8.742278e-08, 0, 0, 0, 2, -0.004272461, -1.867555e-10, 0)
+shape = SubResource("CylinderShape3D_o01bi")

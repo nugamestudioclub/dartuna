@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://jdxl8p6cmmro"]
+
+[ext_resource type="Script" uid="uid://cq6k2htbffw3u" path="res://scripts/dart_component.gd" id="1_lsqsf"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rsyox"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a0f0j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6vnx"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Dart Template" type="Node3D" unique_id=1100022396]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+script = ExtResource("1_lsqsf")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1985407481]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1193894734]
+shape = SubResource("CylinderShape3D_rsyox")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=235804308]
+mesh = SubResource("CylinderMesh_a0f0j")
+surface_material_override/0 = SubResource("StandardMaterial3D_r6vnx")
