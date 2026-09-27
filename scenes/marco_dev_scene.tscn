@@ -1,21 +1,35 @@
 [gd_scene format=3 uid="uid://uyly63xgnnrh"]
 
-[ext_resource type="ArrayMesh" uid="uid://ud46o5j7u2px" path="res://assets/models/3D Models/DartBoard_Low_Poly_Cylinder_001.res" id="1_r6vnx"]
+[ext_resource type="PackedScene" uid="uid://dfimdvjo5bmmk" path="res://assets/prefabs/dartboard___rigid_body_3d.tscn" id="1_r6vnx"]
+[ext_resource type="Script" uid="uid://crxc4f0uvfff7" path="res://dart_launch_raycasting.gd" id="2_o01bi"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_r6vnx"]
-size = Vector3(0.33843994, 1, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_o01bi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o01bi"]
 
 [node name="MarcoDevScene" type="Node3D" unique_id=374469153]
 
-[node name="RigidBody3D" type="CharacterBody3D" parent="." unique_id=844168675]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=717482598]
-transform = Transform3D(-4.371139e-08, 0.17462939, 0, -1, -7.633293e-09, 0, 0, 0, 1, 0, 0, 0)
-mesh = ExtResource("1_r6vnx")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=45856196]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0030822754, 0, 0)
-shape = SubResource("BoxShape3D_r6vnx")
+[node name="Dartboard - RigidBody3D" parent="." unique_id=1711958480 instance=ExtResource("1_r6vnx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=977305428]
-transform = Transform3D(0.007884616, 0, 0.99996895, 0, 1, 0, -0.99996895, 0, 0.007884616, 2.892331, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.72, 0, 0)
+script = ExtResource("2_o01bi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1139474640]
+transform = Transform3D(-0.34512284, 0.54180175, -0.766382, -0.017306078, 0.8127406, 0.58236885, 0.9383981, 0.21425182, -0.27111876, 2.6764286, 0, -3.717342)
+
+[node name="Floor" type="Node3D" parent="." unique_id=703152101]
+transform = Transform3D(7.9734836, 0, 0, 0, 0.28295743, 0, 0, 0, 12.138533, 0, -2.2148046, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1028815789]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("BoxMesh_o01bi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=449677142]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=2139709652]
+shape = SubResource("BoxShape3D_o01bi")
