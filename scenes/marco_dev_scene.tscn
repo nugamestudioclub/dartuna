@@ -10,6 +10,8 @@
 [node name="MarcoDevScene" type="Node3D" unique_id=374469153]
 
 [node name="Dartboard - RigidBody3D" parent="." unique_id=1711958480 instance=ExtResource("1_r6vnx")]
+axis_lock_linear_y = true
+axis_lock_angular_y = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=977305428]
 transform = Transform3D(0.007884616, 0, 0.99996895, 0, 1, 0, -0.99996895, 0, 0.007884616, 4.720353, 0, 0)

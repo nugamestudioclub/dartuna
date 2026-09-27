@@ -15,7 +15,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		print("CLICKED");
 		var mouse_pos: Vector2 = get_viewport().get_mouse_position() / get_viewport().get_visible_rect().size
-		var off = Vector3(2,0.5-mouse_pos.y, 0.5-mouse_pos.x)
+		var off = Vector3(2,mouse_pos.y-0.5, mouse_pos.x-0.5)
 		
 		
 		fire_bullet(off);
