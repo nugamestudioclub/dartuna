@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://uyly63xgnnrh"]
 
 [ext_resource type="PackedScene" uid="uid://dfimdvjo5bmmk" path="res://assets/prefabs/dartboard___rigid_body_3d.tscn" id="1_r6vnx"]
-[ext_resource type="Script" uid="uid://crxc4f0uvfff7" path="res://dart_launch_raycasting.gd" id="2_o01bi"]
+[ext_resource type="Script" uid="uid://crxc4f0uvfff7" path="res://scripts/dart_launch_raycasting.gd" id="2_o01bi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_o01bi"]
 
