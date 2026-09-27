@@ -4,7 +4,8 @@
 [ext_resource type="ArrayMesh" uid="uid://bxjeyh4n53i4f" path="res://assets/models/3D Models/DartBoard_Low_Poly_Cylinder_001.res" id="2_b7or6"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o01bi"]
-height = 0.20935059
+height = 0.03768921
+radius = 0.4404297
 
 [node name="Dartboard - RigidBody3D" type="CharacterBody3D" unique_id=1711958480]
 script = ExtResource("1_hn6am")
@@ -14,5 +15,5 @@ transform = Transform3D(-4.371139e-08, 0.17462939, 0, -1, -7.633293e-09, 0, 0, 0
 mesh = ExtResource("2_b7or6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2146540203]
-transform = Transform3D(-8.742278e-08, -2, 0, 2, -8.742278e-08, 0, 0, 0, 2, -0.004272461, -1.867555e-10, 0)
+transform = Transform3D(-1.3113416e-07, -3, 0, 3, -1.3113416e-07, 0, 0, 0, 3, -0.008071899, -3.528342e-10, 0)
 shape = SubResource("CylinderShape3D_o01bi")

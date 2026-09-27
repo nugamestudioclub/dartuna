@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://uyly63xgnnrh"]
 
 [ext_resource type="PackedScene" uid="uid://dfimdvjo5bmmk" path="res://assets/prefabs/dartboard___rigid_body_3d.tscn" id="1_r6vnx"]
-[ext_resource type="Script" uid="uid://dbvgcjawxjlj5" path="res://scripts/dart_launch.gd" id="2_o01bi"]
+[ext_resource type="Script" uid="uid://crxc4f0uvfff7" path="res://dart_launch_raycasting.gd" id="2_o01bi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_o01bi"]
 
@@ -10,15 +10,17 @@
 [node name="MarcoDevScene" type="Node3D" unique_id=374469153]
 
 [node name="Dartboard - RigidBody3D" parent="." unique_id=1711958480 instance=ExtResource("1_r6vnx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+axis_lock_linear_x = true
 axis_lock_linear_y = true
-axis_lock_angular_y = true
+axis_lock_linear_z = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=977305428]
-transform = Transform3D(0.007884616, 0, 0.99996895, 0, 1, 0, -0.99996895, 0, 0.007884616, 4.720353, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.72, 0, 0)
 script = ExtResource("2_o01bi")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1139474640]
-transform = Transform3D(-0.623832, -0.46395704, 0.6289495, -0.017306076, 0.8127405, 0.5823688, -0.7813668, 0.3524156, -0.5150428, 2.6764286, 0, -3.717342)
+transform = Transform3D(-0.34512284, 0.54180175, -0.766382, -0.017306078, 0.8127406, 0.58236885, 0.9383981, 0.21425182, -0.27111876, 2.6764286, 0, -3.717342)
 
 [node name="Floor" type="Node3D" parent="." unique_id=703152101]
 transform = Transform3D(7.9734836, 0, 0, 0, 0.28295743, 0, 0, 0, 12.138533, 0, -2.2148046, 0)
