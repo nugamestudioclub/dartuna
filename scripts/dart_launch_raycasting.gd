@@ -62,11 +62,6 @@ func _input(event: InputEvent) -> void:
 		var query := PhysicsRayQueryParameters3D.create(from, to)
 		var result := get_world_3d().direct_space_state.intersect_ray(query)
 		if result:
-			#var marker := MeshInstance3D.new()
-			#marker.mesh = SphereMesh.new()
-			#marker.scale = Vector3.ONE * 0.5
-			#get_tree().current_scene.add_child(marker)
-			#marker.global_position = result.position
 			var v := calculate_launch_vector(global_position, result.position, 10, g)
 			print(v);
 			var bullet = BULLET_PREFAB.instantiate();

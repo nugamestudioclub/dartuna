@@ -12,14 +12,19 @@ func launch(launch_velocity: Vector3) -> void:
 	_lvelocity.x *= power;
 	body.velocity = _lvelocity
 	launched = true
-
+	
 
 
 func _physics_process(delta: float) -> void:
 	if not launched:
 		return
 	body.velocity.y -= gravity * delta  # drop effect
-
+	
+	# Rotate the body in place, and skip cases look_at can't handle
+	var dir := body.velocity.normalized()
+	if body.velocity.length_squared() > 0.0001 and abs(dir.dot(Vector3.UP)) < 0.999:
+		body.look_at(body.global_position + body.velocity, Vector3.UP)
+	
 	var collision = body.move_and_collide(body.velocity * delta)
 	if collision:
 		launched = false  # dart sticks where it hits
