@@ -25,16 +25,6 @@ disable_fog = true
 albedo_texture = ExtResource("2_ns6u7")
 texture_filter = 0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ptxhn"]
-
-[sub_resource type="Animation" id="Animation_ns6u7"]
-resource_name = "reticle_icon_spin"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5t4e2"]
-_data = {
-&"reticle_icon_spin": SubResource("Animation_ns6u7")
-}
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_tyffc"]
 size = Vector3(38.774353, 1, 19.132324)
 
@@ -48,19 +38,12 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="camHandler" parent="." unique_id=2045024378 node_paths=PackedStringArray("mi") instance=ExtResource("2_5t4e2")]
-mi = NodePath("../DartMesh")
+mi = NodePath("../ReticleMesh")
 
-[node name="DartMesh" type="MeshInstance3D" parent="." unique_id=1342981780]
+[node name="ReticleMesh" type="MeshInstance3D" parent="." unique_id=1342981780]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.22733, -2.9166527)
 mesh = SubResource("QuadMesh_ptxhn")
 surface_material_override/0 = SubResource("StandardMaterial3D_tyffc")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DartMesh" unique_id=48599928]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.006926775)
-shape = SubResource("SphereShape3D_ptxhn")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DartMesh" unique_id=635211917]
-libraries/ = SubResource("AnimationLibrary_5t4e2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1301393788]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -4)
