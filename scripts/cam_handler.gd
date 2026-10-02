@@ -1,6 +1,6 @@
 extends Node3D
 @export var mi:MeshInstance3D
-var prev_tim_int:int
+var prev_tim_int:int=6.0
 var x_displace:float=0.0
 var y_displace:float=0.0
 @onready var cam:=$Camera3D
@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 			
 			"""Declares both the random x and y displacement away from mouse
 			Also triggers every .6 seconds to change to a new position"""
-			if((tim.get_time_left()==3.0 or int(tim.get_time_left()/0.6)!=prev_tim_int)and tim.get_time_left()!=0.0):
+			if((int(tim.get_time_left()/0.6)!=prev_tim_int)and tim.get_time_left()!=0.0):
 				prev_tim_int=int(tim.get_time_left()/.6)
 				x_displace=randf_range(x_displace-2.5,x_displace+2.5)
 				y_displace=randf_range(y_displace-2.5,y_displace+2.5)
@@ -34,3 +34,4 @@ func _physics_process(delta: float) -> void:
 		if(Input.is_action_just_released("on_mouse_pressed")):
 			x_displace=0.0
 			y_displace=0.0
+			prev_tim_int=6.0
