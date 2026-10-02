@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://cbvvs43shrb6x"]
+[gd_scene format=3 uid="uid://ctjddsiwjkrtk"]
 
-[ext_resource type="PackedScene" uid="uid://724ggrqjqmen" path="res://scenes/cam_handler.tscn" id="2_5t4e2"]
+[ext_resource type="PackedScene" uid="uid://ocygx7vqs34x" path="res://scenes/cam_handler.tscn" id="2_5t4e2"]
 [ext_resource type="Texture2D" uid="uid://5kuc8ch2bwre" path="res://assets/sprites/crosshair_for_dartuna-1.png.png" id="2_ns6u7"]
 [ext_resource type="Script" uid="uid://dhf6wxqx56lm2" path="res://scenes/reticle_mesh.gd" id="3_oqwcg"]
 [ext_resource type="Texture2D" uid="uid://bmss5k0eb6axk" path="res://assets/sprites/sprite_sheet_for_dartuna_crosshair.png" id="3_xvgsr"]
