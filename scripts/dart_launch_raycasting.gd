@@ -7,7 +7,7 @@ extends Node3D
 var g: Vector3 = ProjectSettings.get_setting("physics/3d/default_gravity") \
 	* ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
-const BULLET_PREFAB = preload("res://assets/prefabs/dart_template.tscn")
+const DART_PREFAB = preload("res://assets/prefabs/dart_template.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -62,16 +62,11 @@ func _input(event: InputEvent) -> void:
 		var query := PhysicsRayQueryParameters3D.create(from, to)
 		var result := get_world_3d().direct_space_state.intersect_ray(query)
 		if result:
-			#var marker := MeshInstance3D.new()
-			#marker.mesh = SphereMesh.new()
-			#marker.scale = Vector3.ONE * 0.5
-			#get_tree().current_scene.add_child(marker)
-			#marker.global_position = result.position
 			var v := calculate_launch_vector(global_position, result.position, 10, g)
 			print(v);
-			var bullet = BULLET_PREFAB.instantiate();
-			get_tree().current_scene.add_child(bullet);
-			bullet.global_position = global_position;
-			bullet.launch(v);
+			var dart = DART_PREFAB.instantiate();
+			get_tree().current_scene.add_child(dart);
+			dart.global_position = global_position;
+			dart.launch(v);
 			
 	pass
