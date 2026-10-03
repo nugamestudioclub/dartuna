@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://5kuc8ch2bwre" path="res://assets/sprites/crosshair_for_dartuna-1.png.png" id="2_ns6u7"]
 [ext_resource type="Script" uid="uid://dhf6wxqx56lm2" path="res://scenes/reticle_mesh.gd" id="3_oqwcg"]
 [ext_resource type="Texture2D" uid="uid://bmss5k0eb6axk" path="res://assets/sprites/sprite_sheet_for_dartuna_crosshair.png" id="3_xvgsr"]
+[ext_resource type="PackedScene" uid="uid://uyly63xgnnrh" path="res://scenes/marco_dev_scene.tscn" id="5_oqwcg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ns6u7"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -393,9 +394,6 @@ animations = [{
 "speed": 17.0
 }]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tyffc"]
-size = Vector3(38.774353, 1, 19.132324)
-
 [node name="Node3D" type="Node3D" unique_id=1483540341]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1049239884]
@@ -408,8 +406,11 @@ shadow_enabled = true
 [node name="camHandler" parent="." unique_id=2045024378 node_paths=PackedStringArray("mi") instance=ExtResource("2_5t4e2")]
 mi = NodePath("../ReticleMesh")
 
+[node name="Camera3D" parent="camHandler" index="1" unique_id=671168446]
+fov = 59.7
+
 [node name="ReticleMesh" type="MeshInstance3D" parent="." unique_id=1342981780]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.22733, -2.9166527)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 6.22733, -2.1997995)
 mesh = SubResource("QuadMesh_ptxhn")
 surface_material_override/0 = SubResource("StandardMaterial3D_tyffc")
 script = ExtResource("3_oqwcg")
@@ -418,10 +419,12 @@ script = ExtResource("3_oqwcg")
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 1.9613008, 5.321804)
 sprite_frames = SubResource("SpriteFrames_qn0bo")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1301393788]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -4)
+[node name="Physics Scene" parent="." unique_id=374469153 instance=ExtResource("5_oqwcg")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 0, 0, -10.817828)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1420867874]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2339783, -2.3841858e-07, -1.9929199)
-shape = SubResource("BoxShape3D_tyffc")
-debug_color = Color(0, 0.6, 0.69803923, 0.6666667)
+[node name="SpotLight3D" parent="Physics Scene" index="3" unique_id=1050830601]
+transform = Transform3D(-0.10492522, 0.16878437, -0.45880556, 0.037628215, 0.47065046, 0.16453655, 0.4874165, 0, -0.11146831, -3.503788, 0.725857, -1.1611644)
+spot_range = 21.42101
+
+[editable path="camHandler"]
+[editable path="Physics Scene"]
