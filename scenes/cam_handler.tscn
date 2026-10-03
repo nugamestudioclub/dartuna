@@ -5,6 +5,7 @@
 
 [node name="camHandler" type="Node3D" unique_id=2045024378]
 script = ExtResource("1_y2xim")
+displacement_amplitude = 0.2
 
 [node name="AimTimer" type="Timer" parent="." unique_id=397595477]
 process_callback = 0
@@ -13,5 +14,8 @@ script = ExtResource("2_ow8yp")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=671168446]
 fov = 115.0
+
+[node name="LaunchPt" type="Node3D" parent="." unique_id=1684209079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32757705, -0.38819617, 0)
 
 [connection signal="timeout" from="AimTimer" to="AimTimer" method="_on_timeout"]

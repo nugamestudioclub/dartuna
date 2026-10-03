@@ -5,6 +5,10 @@ var x_displace:float=0.0
 var y_displace:float=0.0
 @onready var cam:=$Camera3D
 @onready var tim:=$AimTimer
+@onready var launch_pt:=$LaunchPt
+
+@export
+var displacement_amplitude = 0.5;
 
 var target_position:Vector3= Vector3.ZERO;
 
@@ -47,12 +51,13 @@ func calculate_launch_vector(origin: Vector3, destination: Vector3, speed: float
 	return vec
 	
 func _spawn_launch() -> void:
-	var origin:Vector3 = global_position;
+	#var origin:Vector3 = global_position;
+	var origin:Vector3 = launch_pt.global_position;
 	var v := calculate_launch_vector(origin, target_position, 25, g);
 	
 	var dart = DART_PREFAB.instantiate();
 	get_tree().current_scene.add_child(dart);
-	dart.global_position = global_position;
+	dart.global_position = origin;
 	dart.launch(v);
 
 func _physics_process(delta: float) -> void:
@@ -72,8 +77,8 @@ func _physics_process(delta: float) -> void:
 			Also triggers every .6 seconds to change to a new position"""
 			if((int(tim.get_time_left()/0.6)!=prev_tim_int)and tim.get_time_left()!=0.0):
 				prev_tim_int=int(tim.get_time_left()/.6)
-				x_displace=randf_range(x_displace-0.1,x_displace+0.1)
-				y_displace=randf_range(y_displace-0.1,y_displace+0.1)
+				x_displace=randf_range(x_displace-displacement_amplitude,x_displace+displacement_amplitude)
+				y_displace=randf_range(y_displace-displacement_amplitude,y_displace+displacement_amplitude)
 				target_position = result.position + Vector3(x_displace,y_displace,0);
 				print("Set target pos:",target_position)
 			#This if will make sure it picks 5 different spots and make smooth movements to each
