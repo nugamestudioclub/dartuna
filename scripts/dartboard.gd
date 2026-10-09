@@ -35,29 +35,6 @@ func _get_rad_bin_simple(radius:float) -> int:
 			return i;
 	return -1;
 	
-# Gets the triagular space that you are located on on a dartboard relative to radius and angle around the 
-# dartboard. This method accounts for the straight edges of the outside of each space.
-func _get_rad_bin_complex(radius:float, theta_360:float, theta_bin:int) -> int:
-	#1. get binned angle theta_bin*20 which < theta_360.
-	var theta_a = 20 * theta_bin;
-	var theta_b = 20*(theta_bin+1)
-	#2. for each bound, increase the radius to get the positions 
-	var a_norm = Vector2(cos(deg_to_rad(theta_a)),sin(deg_to_rad(theta_a)));
-	var b_norm = Vector2(cos(deg_to_rad(theta_b)),sin(deg_to_rad(theta_b)));
-	var c = Vector2(cos(deg_to_rad(theta_360)), sin(deg_to_rad(theta_360)))*radius;
-	for r in ANGULAR_BINS:
-		var a = a_norm * r;
-		var b = b_norm * r;
-		var ab = b-a;
-		var ca = c-a;
-		var bin_ang = ab.dot(a);
-		var pt_ang = ca.dot(a);
-		print("RADIUS REL: ",r, " RADIUS: ",radius)
-		print("BIN ANGLE: ",bin_ang)
-		print("PT ANGLE: ",pt_ang);
-		
-		
-	return 0;
 
 func get_tile(location: Vector3) -> Array:
 	# get location
@@ -78,15 +55,12 @@ func get_tile(location: Vector3) -> Array:
 	# binning action
 	var ang_bin:int = floor(theta_360/ANGULAR_BINS);
 	var rad_bin:int = _get_rad_bin_simple(r);
-	var rad_comp:int = _get_rad_bin_complex(r,theta_360,ang_bin);
-	
 	return [rad_bin, ang_bin]
 
 
 func hit(_location:Vector3) -> void:
 	var output = get_tile(_location);
 	print("[DARTBOARD] (rad_bin, angular_bin) =",output);
-	
 	
 	
 	return;
