@@ -11,7 +11,7 @@ func _physics_process(delta: float) -> void:
 		if(tim_on==false):
 			tim_on=true
 			start()
-		print(get_time_left())
+		#print(get_time_left())
 	#Stops the timer when you release the click
 	if(Input.is_action_just_released("on_mouse_pressed")):
 		print('rel')
@@ -20,3 +20,4 @@ func _physics_process(delta: float) -> void:
 #Fires the dart after the three second timer
 func _on_timeout() -> void:
 	print('Fire Dart')
+	get_parent()._spawn_launch();

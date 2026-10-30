@@ -13,8 +13,6 @@ func launch(launch_velocity: Vector3) -> void:
 	body.velocity = _lvelocity
 	launched = true
 	
-
-
 func _physics_process(delta: float) -> void:
 	if not launched:
 		return
@@ -28,5 +26,8 @@ func _physics_process(delta: float) -> void:
 	var collision = body.move_and_collide(body.velocity * delta)
 	if collision:
 		launched = false  # dart sticks where it hits
+		if collision.get_collider().has_method("hit"):
+			var pos:Vector3 = body.global_position;
+			collision.get_collider().hit(pos)
 	
 	

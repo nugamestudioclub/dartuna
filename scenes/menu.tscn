@@ -1,9 +1,97 @@
 [gd_scene format=3 uid="uid://dtbdw4vmdas3v"]
 
-[node name="Control" type="Control" unique_id=2106366485]
+[ext_resource type="Script" uid="uid://bek4is8toshst" path="res://scenes/menu.gd" id="1_yqeox"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ptxhn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn0bo"]
+corner_radius_top_left = 128
+corner_radius_top_right = 128
+corner_radius_bottom_right = 128
+corner_radius_bottom_left = 128
+
+[node name="Menu" type="Control" unique_id=2106366485]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_yqeox")
+
+[node name="Panel" type="Panel" parent="." unique_id=979641007]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ptxhn")
+
+[node name="Label" type="Label" parent="Panel" unique_id=514176892]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -129.5
+offset_top = 46.0
+offset_right = 137.5
+offset_bottom = 138.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 67
+text = "Dartuna"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Button" parent="." unique_id=366124127]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -120.0
+offset_right = 112.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_qn0bo")
+text = "Play"
+
+[node name="Options" type="Button" parent="." unique_id=290836335]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -219.0
+offset_top = 51.0
+offset_right = -19.0
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_qn0bo")
+text = "Options"
+
+[node name="Exit" type="Button" parent="." unique_id=434334917]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 36.0
+offset_top = 72.0
+offset_right = 236.0
+offset_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_qn0bo")
+text = "Quit"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

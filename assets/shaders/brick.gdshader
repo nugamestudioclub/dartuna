@@ -18,9 +18,9 @@ void fragment() {
 	// Called for every pixel the material is visible on.
 	 vec2 brick_uv;
     
-    if (world_normal.x > world_normal.y && world_normal.x > world_normal.z) {
+    if (world_normal.z > world_normal.y && world_normal.z > world_normal.x) {
         brick_uv = world_pos.zy; // Wall is facing Left/Right (X axis)
-    } else if (world_normal.z > world_normal.x && world_normal.z > world_normal.y) {
+    } else if (world_normal.x > world_normal.z && world_normal.x > world_normal.y) {
         brick_uv = world_pos.xy; // Wall is facing Front/Back (Z axis)
     } else {
         brick_uv = world_pos.xz; // Flat surface facing Up/Down (Y axis)

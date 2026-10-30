@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c5r1ycupc4ew8"
-path="res://.godot/imported/DartBoard_Low_Poly.glb-fcbf458e3b1d690f6e7aef4abc5e7fe3.scn"
+path="res://.godot/imported/DartBoard_Low_Poly.glb-63197724df44fb43b23656443436d3e8.scn"
 
 [deps]
 
-source_file="res://assets/models/3D Models/DartBoard_Low_Poly.glb"
-dest_files=["res://.godot/imported/DartBoard_Low_Poly.glb-fcbf458e3b1d690f6e7aef4abc5e7fe3.scn"]
+source_file="res://assets/models/3D Models/Dartboard/DartBoard_Low_Poly.glb"
+dest_files=["res://.godot/imported/DartBoard_Low_Poly.glb-63197724df44fb43b23656443436d3e8.scn"]
 
 [params]
 
@@ -43,32 +43,32 @@ _subresources={
 "materials": {
 "Material": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://assets/models/3D Models/Material.tres",
+"use_external/fallback_path": "res://assets/models/3D Models/Dartboard/Material.tres",
 "use_external/path": "uid://yohgxuqfqe5v"
 },
 "Material.001": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://assets/models/3D Models/Material.001.tres",
+"use_external/fallback_path": "res://assets/models/3D Models/Dartboard/Material.001.tres",
 "use_external/path": "uid://bkiertmvuqnx0"
 },
 "Material.004": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://assets/models/3D Models/Material.004.tres",
+"use_external/fallback_path": "res://assets/models/3D Models/Dartboard/Material.004.tres",
 "use_external/path": "uid://dqxfs3xikk7uv"
 },
 "Material.009": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://assets/models/3D Models/Material.009.tres",
+"use_external/fallback_path": "res://assets/models/3D Models/Dartboard/Material.009.tres",
 "use_external/path": "uid://t5pthfijcqjp"
 },
 "Material.010": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://assets/models/3D Models/Material.010.tres",
+"use_external/fallback_path": "res://assets/models/3D Models/Dartboard/Material.010.tres",
 "use_external/path": "uid://brncbthm7mx6c"
 },
 "Material.011": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://assets/models/3D Models/Material.011.tres",
+"use_external/fallback_path": "res://assets/models/3D Models/Dartboard/Material.011.tres",
 "use_external/path": "uid://ce5uhyvt26bow"
 }
 },
@@ -79,7 +79,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/models/3D Models/DartBoard_Low_Poly_Cylinder_001.res",
+"save_to_file/fallback_path": "res://assets/models/3D Models/Dartboard/DartBoard_Low_Poly_Cylinder_001.res",
 "save_to_file/path": "uid://bxjeyh4n53i4f"
 }
 }

@@ -1,13 +1,66 @@
 extends Node3D
 @export var mi:MeshInstance3D
-var prev_tim_int:int
-var x_displace:float=0.0
-var y_displace:float=0.0
-@onready var cam:=$Camera3D
-@onready var tim:=$AimTimer
+
+var prev_tim_int:int=6.0;
+var x_displace:float=0.0;
+var y_displace:float=0.0;
+
+@onready var cam:=$Camera3D;
+@onready var tim:=$AimTimer;
+@onready var launch_pt:=$LaunchPt;
+@export var displacement_amplitude = 0.5;
+
+
+var target_position:Vector3= Vector3.ZERO;
+
+var g: Vector3 = ProjectSettings.get_setting("physics/3d/default_gravity") \
+	* ProjectSettings.get_setting("physics/3d/default_gravity_vector")
+
+const DART_PREFAB = preload("res://assets/prefabs/dart_template.tscn")
+func _ready() -> void:
+	pass
+
+func calculate_launch_vector(origin: Vector3, destination: Vector3, speed: float, gravity: Vector3, high_arc: bool = false) -> Vector3:
+	
+	var d := destination - origin
+	var gg := gravity.dot(gravity)
+	
+	if gg < 0.0001:
+		return d.normalized() * speed
+
+	var b := d.dot(gravity) + speed * speed
+	var discriminant := b * b - gg * d.dot(d)
+	
+	if discriminant < 0.0:
+
+		return Vector3.ZERO  # Out of range at this speed
+
+	var root := sqrt(discriminant)
+	var u := (b + root if high_arc else b - root) / (gg * 0.5)  # u = t^2
+
+	if u <= 0.0:
+		return Vector3.ZERO
+
+	var t := sqrt(u)
+	var vec:Vector3 = Vector3()
+	vec = d / t - gravity * (0.5 * t)
+	vec.x *=0.25;
+	
+
+	return vec
+	
+func _spawn_launch() -> void:
+	var origin:Vector3 = launch_pt.global_position;
+	print("[LAUNCHER] Targeting:",target_position)
+	var v := calculate_launch_vector(origin, target_position, 25, g);
+	var dart = DART_PREFAB.instantiate();
+	
+	get_tree().current_scene.add_child(dart);
+	dart.global_position = origin;
+	dart.launch(v);
+
 func _physics_process(delta: float) -> void:
 	var mousePos:=get_viewport().get_mouse_position()
-	#print(mousePos)
 	#These lines help to set up the two points in space for the ray
 	var rayStart :Vector3=cam.project_ray_origin(mousePos)
 	var direction :Vector3=cam.project_ray_normal(mousePos)
@@ -21,12 +74,15 @@ func _physics_process(delta: float) -> void:
 			
 			"""Declares both the random x and y displacement away from mouse
 			Also triggers every .6 seconds to change to a new position"""
-			if((tim.get_time_left()==3.0 or int(tim.get_time_left()/0.6)!=prev_tim_int)and tim.get_time_left()!=0.0):
+			if((int(tim.get_time_left()/0.6)!=prev_tim_int)and tim.get_time_left()!=0.0):
 				prev_tim_int=int(tim.get_time_left()/.6)
-				x_displace=randf_range(x_displace-2.5,x_displace+2.5)
-				y_displace=randf_range(y_displace-2.5,y_displace+2.5)
+				x_displace=randf_range(x_displace-displacement_amplitude,x_displace+displacement_amplitude)
+				y_displace=randf_range(y_displace-displacement_amplitude,y_displace+displacement_amplitude)
+				target_position = result.position + Vector3(x_displace,y_displace,0);
+				
 			#This if will make sure it picks 5 different spots and make smooth movements to each
-			mi.global_position=lerp(mi.global_position,Vector3(result.position.x+x_displace,result.position.y+y_displace,result.position.z),.18)
+			var forward_vec:Vector3 = (cam.position-result.position).normalized();
+			mi.global_position=lerp(mi.global_position,Vector3(result.position.x+x_displace,result.position.y+y_displace,result.position.z)+forward_vec*5.0,.18)
 		else:
 			#Makes the thing move with the mouse mi being the mesh instance
 			mi.global_position=result.position
@@ -34,3 +90,4 @@ func _physics_process(delta: float) -> void:
 		if(Input.is_action_just_released("on_mouse_pressed")):
 			x_displace=0.0
 			y_displace=0.0
+			prev_tim_int=6.0
