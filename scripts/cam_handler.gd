@@ -4,7 +4,7 @@ extends Node3D
 var prev_tim_int:int=6.0;
 var x_displace:float=0.0;
 var y_displace:float=0.0;
-
+var on_enemy:bool=true;
 @onready var cam:=$Camera3D;
 @onready var tim:=$AimTimer;
 @onready var launch_pt:=$LaunchPt;
@@ -65,6 +65,15 @@ func _physics_process(delta: float) -> void:
 	var space_state:=get_world_3d().direct_space_state
 	var p:PhysicsRayQueryParameters3D=PhysicsRayQueryParameters3D.create(rayStart,rayStart+direction*1000.0)
 	var result:=space_state.intersect_ray(p)#This is the mouse pos
+	if(Input.is_action_just_pressed('switch_camera')):
+		if on_enemy:
+			#lerp_angle(0,-1.57079633,.5);
+			rotate_y(-90*PI/180)
+			on_enemy=false;
+		else:
+			#lerp_angle(0,90*PI/180,.5); Maybe figure out how to use this line
+			rotate_y(90*PI/180)
+			on_enemy=true;
 	if result:
 		if(Input.is_action_pressed("on_mouse_pressed")):
 			#Could do some division with possible lossy conversions or rounding to change it
@@ -77,7 +86,6 @@ func _physics_process(delta: float) -> void:
 				x_displace=randf_range(x_displace-displacement_amplitude,x_displace+displacement_amplitude)
 				y_displace=randf_range(y_displace-displacement_amplitude,y_displace+displacement_amplitude)
 				target_position = result.position + Vector3(x_displace,y_displace,0);
-				
 			#This if will make sure it picks 5 different spots and make smooth movements to each
 			var forward_vec:Vector3 = (cam.position-result.position).normalized();
 			mi.global_position=lerp(mi.global_position,Vector3(result.position.x+x_displace,result.position.y+y_displace,result.position.z)+forward_vec*5.0,.18)

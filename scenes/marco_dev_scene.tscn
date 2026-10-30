@@ -45,6 +45,10 @@ mesh = SubResource("BoxMesh_a0f0j")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/StaticBody3D" unique_id=232723118]
 shape = SubResource("BoxShape3D_a0f0j")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1238588236]
+transform = Transform3D(1.19486145e-08, 0, -14.999951, 0, 7.4999895, 0, 1.0019903, 0, 1.7887263e-07, -6.4713583, 0, 8.010237)
+mesh = SubResource("BoxMesh_a0f0j")
+
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1050830601]
 transform = Transform3D(-0.20985043, 0.3375687, -0.9176111, 0.07525642, 0.94130087, 0.3290731, 0.97483295, 0, -0.22293662, -5.710175, 1.8497126, -1.1611645)
 light_color = Color(0.9423773, 0.7017057, 0.63218457, 1)

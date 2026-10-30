@@ -1,18 +1,17 @@
 extends Node
 class_name item_class
-var rarity:="common"
 #Will be like the cost the item has in a shop post fight
-var cost:=5
 #In case the item is discovered
-var no_cost:=true
-var type:="dart"
-func set_type(tp:String):
-	"""Sets type whic can be dart, glove, or maybe others"""
-	type=tp
-func set_rarity(rare:String):
-	"""Sets rarity can either be common, uncommon, and rare"""
-	rarity=rare
+func _init(tp:String='dart',rare:String='common',c:int=5,no_c:bool=false,in_inventory:bool=false)->void:
+	"""Initialized type rarity cost and no_cost"""
+	self.type=tp
+	self.rarity=rare
+	self.cost=c
+	self.no_cost=no_c
+	self.inventory=in_inventory
 func set_cost(c:int):
-	cost=c
-func set_no_cost(c:bool):
-	no_cost=c
+	self.cost=c
+func set_no_cost(no_c:bool):
+	self.no_cost=no_c
+func switch_in_inventory():
+	self.inventory=!self.inventory
