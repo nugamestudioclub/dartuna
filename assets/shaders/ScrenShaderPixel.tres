@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cb4pvoslykawd"]
+
+[ext_resource type="Shader" uid="uid://dmi4k7il2pi4n" path="res://assets/shaders/ScrenShaderPixel.gdshader" id="1_laja7"]
+
+[resource]
+shader = ExtResource("1_laja7")
+shader_parameter/size = Vector2(32, 28)

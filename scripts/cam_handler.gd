@@ -10,13 +10,15 @@ var y_displace:float=0.0;
 @onready var launch_pt:=$LaunchPt;
 @export var displacement_amplitude = 0.5;
 
+
 var target_position:Vector3= Vector3.ZERO;
 
 var g: Vector3 = ProjectSettings.get_setting("physics/3d/default_gravity") \
 	* ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
 const DART_PREFAB = preload("res://assets/prefabs/dart_template.tscn")
-
+func _ready() -> void:
+	pass
 
 func calculate_launch_vector(origin: Vector3, destination: Vector3, speed: float, gravity: Vector3, high_arc: bool = false) -> Vector3:
 	

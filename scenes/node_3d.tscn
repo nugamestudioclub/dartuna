@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dhf6wxqx56lm2" path="res://scenes/reticle_mesh.gd" id="3_oqwcg"]
 [ext_resource type="Texture2D" uid="uid://bmss5k0eb6axk" path="res://assets/sprites/sprite_sheet_for_dartuna_crosshair.png" id="3_xvgsr"]
 [ext_resource type="PackedScene" uid="uid://uyly63xgnnrh" path="res://scenes/marco_dev_scene.tscn" id="5_oqwcg"]
+[ext_resource type="Shader" uid="uid://dmi4k7il2pi4n" path="res://assets/shaders/ScrenShaderPixel.gdshader" id="6_a6664"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ns6u7"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -394,6 +395,10 @@ animations = [{
 "speed": 17.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_10v3s"]
+shader = ExtResource("6_a6664")
+shader_parameter/size = Vector2(500, 400)
+
 [node name="Node3D" type="Node3D" unique_id=1483540341]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1049239884]
@@ -429,6 +434,16 @@ spot_range = 21.42101
 
 [node name="Node3D" type="Node3D" parent="." unique_id=824210088]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9789262, 0, -10.393694)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2078065936]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1983411769]
+material = SubResource("ShaderMaterial_10v3s")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [editable path="camHandler"]
 [editable path="Physics Scene"]
