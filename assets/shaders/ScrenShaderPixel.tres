@@ -4,4 +4,4 @@
 
 [resource]
 shader = ExtResource("1_laja7")
-shader_parameter/size = Vector2(500, 400)
+shader_parameter/size = Vector2(32, 28)
