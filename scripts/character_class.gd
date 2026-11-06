@@ -2,6 +2,7 @@ class_name CharacterClass extends Node
 var max_hp:=100
 var hp:=100
 var block:=0
+#The buff and debuff numbers are how many turns they are active for
 var buff:=0
 var debuff:=0
 """Initializers for the class"""
@@ -49,10 +50,15 @@ func actions(a:Array[String],power:Array[int],targets:Array[CharacterClass])->vo
 		if(a[i]=='heal'):
 			add_hp(round(power[i]*.25))
 		if(a[i]=='buff'):
+			"""Buffs to check for/add later on
+			damage, block, etc."""
 			time_buff(round(power[i]/4))
 		if(a[i]=='debuff'):#This needs an enemy so weird to add
+			"""Might add an equal and opposite debuff for every buff there is"""
 			targets[i].time_debuff(round(power[i]/4))
 	if buff!=0:
 		buff-=1
 	if debuff!=0:
 		debuff-=1
+	"""Could code it so that the player and enemy removes each others armour at
+	end of their turn"""

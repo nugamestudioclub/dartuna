@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://blvjol31rn7f" path="res://assets/shaders/brick.gdshader" id="3_j2qhm"]
 [ext_resource type="Texture2D" uid="uid://de1bg84683m53" path="res://assets/textures/bricks.jpg" id="4_vi4wt"]
 [ext_resource type="Texture2D" uid="uid://d2l1k3j4fao31" path="res://assets/textures/bricks_norm.png" id="5_u57n8"]
+[ext_resource type="Script" uid="uid://b6ki2rk8h5b2l" path="res://scenes/game_manager_node.gd" id="5_vi4wt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o01bi"]
 
@@ -58,3 +59,8 @@ light_volumetric_fog_energy = 16.0
 shadow_enabled = true
 spot_range = 10.0
 spot_angle = 77.43302
+
+[node name="GameManagerNode" type="Node" parent="." unique_id=2050263349]
+script = ExtResource("5_vi4wt")
+
+[connection signal="hitBoard" from="Dartboard - RigidBody3D" to="GameManagerNode" method="_on_hitBoard"]

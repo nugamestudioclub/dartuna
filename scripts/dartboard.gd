@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-
+signal hitBoard()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -61,6 +61,5 @@ func get_tile(location: Vector3) -> Array:
 func hit(_location:Vector3) -> void:
 	var output = get_tile(_location);
 	print("[DARTBOARD] (rad_bin, angular_bin) =",output);
-	
-	
+	hitBoard.emit()
 	return;
