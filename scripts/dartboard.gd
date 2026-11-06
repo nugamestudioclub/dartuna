@@ -1,6 +1,9 @@
 extends CharacterBody3D
 
 signal hitBoard()
+@export var renderer: MeshInstance3D;
+@export var selectMaterial: StandardMaterial3D;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -15,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta;
 	move_and_slide()
-
+	
 
 @export var board_radius: float = 1.0  # radius of the outer edge, in the node's local units
 # Upper bound of each radius bin, normalized so the outer edge = 1.0
@@ -62,4 +65,8 @@ func hit(_location:Vector3) -> void:
 	var output = get_tile(_location);
 	print("[DARTBOARD] (rad_bin, angular_bin) =",output);
 	hitBoard.emit()
+	#var materials_count = renderer.get_surface_override_material_count();
+	#print("MATERIALS COUNT:",materials_count)
+	#renderer.set_surface_override_material(0,selectMaterial);
+	
 	return;
