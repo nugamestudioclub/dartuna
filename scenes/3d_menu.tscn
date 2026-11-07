@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cop21pa13fry1"]
+
+[ext_resource type="PackedScene" uid="uid://dkvggkg2jimbu" path="res://assets/models/3D Models/Dartboard2/SegmentedDartboard.glb" id="1_7ylir"]
+[ext_resource type="Texture2D" uid="uid://b7j5tgw2117kp" path="res://assets/sprites/menu_background_gd.png" id="2_ux1p2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n45uo"]
+albedo_color = Color(0.40379798, 0.5356996, 0.8649518, 1)
+metallic = 0.19
+
+[sub_resource type="TextMesh" id="TextMesh_6pmnr"]
+material = SubResource("StandardMaterial3D_n45uo")
+text = "DARTUNA"
+font_size = 127
+
+[node name="3d Menu" type="Node3D" unique_id=1477433574]
+
+[node name="SegmentedDartboard" parent="." unique_id=539186958 instance=ExtResource("1_7ylir")]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0.0696919, -0.029164314, 0.00022363663)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1459777036]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.059175, 2.6799839, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1714885864]
+transform = Transform3D(-1.3113416e-07, 0, 40, 0, 3, 0, -3, 0, -1.7484556e-06, 0, 5, 0)
+mesh = SubResource("TextMesh_6pmnr")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1452615276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.951828, 4.5616913, 0)
+light_energy = 10.0
+omni_range = 15.0
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=892495421]
+transform = Transform3D(-4.808253e-07, 0, 11, 0, 10, 0, -11, 0, -4.808253e-07, -100, 10.107662, 0)
+texture = ExtResource("2_ux1p2")
